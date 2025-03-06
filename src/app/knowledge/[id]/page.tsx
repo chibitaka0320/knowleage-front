@@ -20,18 +20,19 @@ mainメソッドを実行してアプリケーションを起動します。
   createdAt: "2024-03-04",
 };
 
-export default function KnowledgeDetail({
+export default async function KnowledgeDetail({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold text-gray-900">{knowledge.title}</h1>
         <div className="flex space-x-4">
           <Link
-            href={`/knowledge/${params.id}/edit`}
+            href={`/knowledge/${id}/edit`}
             className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
           >
             編集
